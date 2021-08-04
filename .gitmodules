@@ -1,3 +1,3 @@
 [submodule "themes/newsroom"]
 	path = themes/newsroom
-	url = git@shortcuts-news-github:shortcuts-news/shortcuts.hugo.theme_newsroom.git
+	url = https://github.com/shortcuts-news/shortcuts.hugo.theme_newsroom.git
