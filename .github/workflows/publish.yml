@@ -18,7 +18,7 @@ jobs:
         with:
           hugo-version: '0.42.1'
       - name: Clone theme
-        run: bin/setup_theme
+        run: git submodule update --init --recursive
       - name: Build
         run: hugo -F
       - name: Deploy
