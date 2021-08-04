@@ -7,25 +7,39 @@ on:
 
 jobs:
   publish:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
+
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Hugo dependencies for our site
-        run: sudo apt-get update && sudo apt-get -y install python-docutils python-pygments
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+  
+      # - name: Setup Hugo dependencies for our site
+      #   run: sudo apt-get update && sudo apt-get -y install python-docutils python-pygments
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.42.1'
-      - name: Clone theme
-        run: git submodule update --init --recursive
+          hugo-version: '0.87.0'
+          extended: true
+
+      # - name: Clone theme
+      #   run: git submodule update --init --recursive
+
       - name: Build
-        run: hugo -F
+        run: hugo --minify
+
+      # - name: Build
+      #   run: hugo -F
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          # personal_token: ${{ secrets.REPO_PUBLISH_KEY }}
           external_repository: shortcuts-news/shortcuts.github.io
           publish_branch: master
           publish_dir: ./public
