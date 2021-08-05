@@ -12,7 +12,7 @@ categories = [
     "Development",
     "golang",
 ]
-video = "l9SHUSP_LJ8"
+video = "Sv4zVWeadqg"
 +++
 
 ## Step 1. Install Hugo

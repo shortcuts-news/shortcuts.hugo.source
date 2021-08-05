@@ -27,14 +27,8 @@ jobs:
           hugo-version: '0.87.0'
           extended: true
 
-      # - name: Clone theme
-      #   run: git submodule update --init --recursive
-
       - name: Build
         run: hugo --minify
-
-      # - name: Build
-      #   run: hugo -F
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

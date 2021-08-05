@@ -14,7 +14,7 @@ categories = [
 "golang",
 ]
 image = "artist.jpg"
-video = "uBynB50liTw"
+video = "FrRq_Ix6Uqs"
 +++
 
 Hugo uses the excellent [Go](https://golang.org/) [html/template](https://golang.org/pkg/html/template/) library for
